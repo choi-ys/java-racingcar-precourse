@@ -17,7 +17,7 @@ public class CarNumbers {
         this.numbers.add(randomNumber);
     }
 
-    List<Integer> getNumbers() {
+    public List<Integer> getNumbers() {
         return numbers;
     }
 

@@ -3,6 +3,7 @@ package racingcar.service;
 import racingcar.domain.Car;
 import racingcar.domain.CarNumbers;
 import racingcar.domain.RoundResult;
+import racingcar.domain.RoundResults;
 
 /**
  * @author : choi-ys
@@ -23,5 +24,13 @@ public class RefereeService {
 
     private boolean isMoving(CarNumbers carNumbers, int round) {
         return carNumbers.getRandomNumberByRound(round) >= 4;
+    }
+
+    public RoundResults play(Car car, int gameCount) {
+        RoundResults roundResults = new RoundResults();
+        for (int i = 1; i <= gameCount; i++) {
+            roundResults.addSingleRoundResult(playSingleRound(car, i));
+        }
+        return roundResults;
     }
 }
