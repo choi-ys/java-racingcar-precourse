@@ -20,4 +20,8 @@ public class CarNumbers {
     List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int getRandomNumberByRound(int round) {
+        return numbers.get(round - 1);
+    }
 }
