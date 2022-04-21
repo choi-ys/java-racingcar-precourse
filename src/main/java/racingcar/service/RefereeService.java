@@ -1,19 +1,17 @@
 package racingcar.service;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarNumbers;
-import racingcar.domain.RoundResult;
-import racingcar.domain.RoundResults;
+import racingcar.domain.*;
 
 /**
  * @author : choi-ys
  * @date : 2022/04/21 8:14 오후
- * 레프리는 유지해야하는 상태값이 없어도 되도록 설계했으므로, 여러객체의 메서드를 호출하는것을 하나의 트랜잭션으로 가지도록 Service Layer 구현
+ * 결과 판정 부는 별도의 상태값이 없도록 설계하였으므로,
+ * 여러 객체의 메서드를 호출하는 하나의 트랜잭션으로 가지도록 Service Layer에 구현
  */
 public class RefereeService {
 
     public RoundResult playSingleRound(Car car, int round) {
-        RoundResult roundResult = new RoundResult(car, round);
+        RoundResult roundResult = new RoundResult(round);
         if (isMoving(car.getCarNumbers(), round)) {
             roundResult.go();
             return roundResult;
@@ -26,11 +24,11 @@ public class RefereeService {
         return carNumbers.getRandomNumberByRound(round) >= 4;
     }
 
-    public RoundResults play(Car car, int gameCount) {
+    public CarPlayResult play(Car car, int totalRound) {
         RoundResults roundResults = new RoundResults();
-        for (int i = 1; i <= gameCount; i++) {
-            roundResults.addSingleRoundResult(playSingleRound(car, i));
+        for (int i = 1; i <= totalRound; i++) {
+            roundResults.addEachRoundResult(playSingleRound(car, i));
         }
-        return roundResults;
+        return new CarPlayResult(car, roundResults);
     }
 }

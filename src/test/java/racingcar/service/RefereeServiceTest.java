@@ -4,8 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
+import racingcar.domain.CarPlayResult;
 import racingcar.domain.RoundResult;
-import racingcar.domain.RoundResults;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +42,6 @@ class RefereeServiceTest {
         RoundResult roundResult = refereeService.playSingleRound(car, round);
 
         // Then
-        assertThat(roundResult.getCar().getCarNumbers().getRandomNumberByRound(round)).isEqualTo(randomNumber);
         assertThat(roundResult.getRound()).as("현재 라운드의 수행 결과 여부 검증").isEqualTo(round);
         assertThat(roundResult.getRoundStatus().isStop()).as("라운드 수행 결과 검증").isTrue();
     }
@@ -60,13 +59,13 @@ class RefereeServiceTest {
         RefereeService refereeService = new RefereeService();
 
         // When
-        RoundResults roundResults = refereeService.play(car, gameCount);
+        CarPlayResult carPlayResult = refereeService.play(car, gameCount);
 
         // Then
-        List<RoundResult> actual = roundResults.getRoundResults();
+        List<RoundResult> actual = carPlayResult.getRoundResults();
         assertAll(
                 () -> assertThat(car.getCarNumbers().getNumbers().containsAll(randomNumbers)),
-                () -> assertThat(actual.get(0).getCar()).isEqualTo(car),
+                () -> assertThat(carPlayResult.getCar()).isEqualTo(car),
                 () -> assertThat(actual.size()).isEqualTo(gameCount),
                 () -> assertThat(actual.get(gameCount - 1).getRound()).isEqualTo(gameCount),
                 () -> assertThat(actual.get(0).getRoundStatus().isStop()).as("1 라운드 진행 결과").isTrue(),

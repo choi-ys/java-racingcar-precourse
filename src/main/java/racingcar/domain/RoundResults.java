@@ -14,7 +14,7 @@ public class RoundResults {
         return roundResults;
     }
 
-    public void addSingleRoundResult(RoundResult roundResult) {
+    public void addEachRoundResult(RoundResult roundResult) {
         roundResults.add(roundResult);
     }
 }
