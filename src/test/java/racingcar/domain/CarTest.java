@@ -62,7 +62,6 @@ public class CarTest {
         int randomNumber = 1;
 
         // When
-        Car car = new Car(carName);
         car.addNumber(randomNumber);
 
         // Then
