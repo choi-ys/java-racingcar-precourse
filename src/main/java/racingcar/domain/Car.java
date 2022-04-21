@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,21 +8,22 @@ import java.util.List;
  */
 public class Car {
     private CarName carName;
-    private List<Integer> numbers = new ArrayList<>();
+    private CarNumbers carNumbers;
 
     public Car(String name) {
         this.carName = new CarName(name);
-    }
-
-    public void addNumber(int randomNumber) {
-        this.numbers.add(randomNumber);
+        this.carNumbers = new CarNumbers();
     }
 
     public String getCarName() {
         return carName.getName();
     }
 
+    public void addNumber(int randomNumber) {
+        carNumbers.addNumber(randomNumber);
+    }
+
     public List<Integer> getNumbers() {
-        return numbers;
+        return this.carNumbers.getNumbers();
     }
 }
