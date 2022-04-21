@@ -66,8 +66,8 @@ public class CarTest {
 
         // Then
         assertAll(
-                () -> assertThat(car.getNumbers()).size().isEqualTo(1),
-                () -> assertThat(car.getNumbers().get(0)).isEqualTo(randomNumber)
+                () -> assertThat(car.getCarNumbers().getNumbers()).size().isEqualTo(1),
+                () -> assertThat(car.getCarNumbers().getNumbers().get(0)).isEqualTo(randomNumber)
         );
     }
 }

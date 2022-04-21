@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.List;
-
 /**
  * @author : choi-ys
  * @date : 2022/04/21 5:50 오후
@@ -23,7 +21,7 @@ public class Car {
         carNumbers.addNumber(randomNumber);
     }
 
-    public List<Integer> getNumbers() {
-        return this.carNumbers.getNumbers();
+    public CarNumbers getCarNumbers() {
+        return carNumbers;
     }
 }
