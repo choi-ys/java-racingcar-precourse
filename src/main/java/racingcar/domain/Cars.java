@@ -14,25 +14,16 @@ public class Cars {
         this.cars = cars;
     }
 
-    public static Cars of(String namesByComma) {
-        String[] strings = splitByComma(namesByComma);
+    public static Cars of(Player player) {
+        List<String> carNames = player.getCarNames();
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < strings.length; i++) {
-            cars.add(new Car(strings[i]));
+        for (String carName : carNames) {
+            cars.add(new Car(carName));
         }
         return new Cars(cars);
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     public Car getCarByIndex(int index) {
         return cars.get(index);
     }
-
-    private static String[] splitByComma(String namesByComma) {
-        return namesByComma.split(",");
-    }
-
 }
