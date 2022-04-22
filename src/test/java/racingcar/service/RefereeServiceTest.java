@@ -30,7 +30,7 @@ class RefereeServiceTest {
 
     @Test
     @DisplayName("단일 Car 객체의 단일 라운드 Play 결과 Test")
-    public void playSingleRoundResultTest() {
+    public void singleCarPlaySingleRoundResultTest() {
         // Given
         int randomNumber = 1;
         car.addNumber(randomNumber);
@@ -48,12 +48,12 @@ class RefereeServiceTest {
 
     @Test
     @DisplayName("단일 Car 객체의 전체 라운드 Play 결과 Test")
-    public void playAllRoundResultTest() {
+    public void singleCarPlayAllRoundResultTest() {
         // Given
         int gameCount = 5;
         List<Integer> randomNumbers = Arrays.asList(1, 2, 3, 4, 5);
-        for (int i = 0; i < randomNumbers.size(); i++) {
-            car.addNumber(randomNumbers.get(i));
+        for (Integer randomNumber : randomNumbers) {
+            car.addNumber(randomNumber);
         }
 
         RefereeService refereeService = new RefereeService();
