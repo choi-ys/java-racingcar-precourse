@@ -23,7 +23,15 @@ public class Cars {
         return new Cars(cars);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public Car getCarByIndex(int index) {
         return cars.get(index);
+    }
+
+    public int getCarsSize() {
+        return cars.size();
     }
 }
