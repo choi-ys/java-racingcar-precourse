@@ -22,4 +22,8 @@ public class CarPlayResult {
     public List<RoundResult> getRoundResults() {
         return roundResults.getRoundResults();
     }
+
+    public int getScore() {
+        return roundResults.roundResultToScore();
+    }
 }

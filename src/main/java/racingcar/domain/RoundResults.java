@@ -17,4 +17,16 @@ public class RoundResults {
     public void addEachRoundResult(RoundResult roundResult) {
         roundResults.add(roundResult);
     }
+
+    public int roundResultToScore() {
+        int score = 0;
+        for (RoundResult roundResult : roundResults) {
+            score += addScore(roundResult);
+        }
+        return score;
+    }
+
+    private int addScore(RoundResult roundResult) {
+        return roundResult.getRoundStatus().isGo() ? 1 : 0;
+    }
 }
