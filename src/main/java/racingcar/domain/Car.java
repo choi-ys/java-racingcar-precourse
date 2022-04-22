@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.domain.wrap.CarName;
+import racingcar.domain.wrap.CarNumbers;
+
 /**
  * @author : choi-ys
  * @date : 2022/04/21 5:50 오후

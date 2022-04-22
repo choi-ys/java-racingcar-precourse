@@ -10,8 +10,8 @@ import racingcar.domain.Player;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static racingcar.service.RandomNumberService.END_NUMBER;
-import static racingcar.service.RandomNumberService.START_NUMBER;
+import static racingcar.domain.wrap.CarNumbers.END_NUMBER;
+import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
 
 /**
  * @author : choi-ys

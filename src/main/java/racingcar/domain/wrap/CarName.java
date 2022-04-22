@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.domain.wrap;
+
+import static racingcar.constants.ErrorMessage.CAR_NAME_OVER_LENGTH_ERROR_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -9,7 +11,7 @@ public class CarName {
 
     public CarName(String name) {
         if (name.length() < 1 || name.length() > 5) {
-            throw new IllegalArgumentException("[ERROR] 1~5자의 이름을 입력하세요");
+            throw new IllegalArgumentException(CAR_NAME_OVER_LENGTH_ERROR_MESSAGE);
         }
         this.name = name;
     }
