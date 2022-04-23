@@ -17,10 +17,4 @@ public class RandomNumberService {
             car.addNumber(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
         }
     }
-
-    public void generateRandomNumberForAllRound(Cars cars, int roundCount) {
-        for (int i = 1; i <= roundCount; i++) {
-            generateRandomNumberForSingleRound(cars);
-        }
-    }
 }

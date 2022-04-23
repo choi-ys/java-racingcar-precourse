@@ -46,19 +46,19 @@ public class RandomNumberServiceTest {
         }
     }
 
-    @Test
-    @DisplayName("전체 라운드 진행을 위해, 각 Car 객체에 생성한 난수 할당")
-    public void generateRandomNumberForAllRound() {
-        // When
-        randomNumberService.generateRandomNumberForAllRound(cars, roundCount);
-
-        // Then
-        for (int i = 0; i < cars.getCarsSize(); i++) {
-            Car carByIndex = cars.getCarByIndex(i);
-            List<Integer> carNumberList = carByIndex.getCarNumbers().getNumbers();
-            for (int j = 0; j < roundCount; j++) {
-                assertThat(carNumberList.get(j)).isBetween(START_NUMBER, END_NUMBER);
-            }
-        }
-    }
+//    @Test
+//    @DisplayName("전체 라운드 진행을 위해, 각 Car 객체에 생성한 난수 할당")
+//    public void generateRandomNumberForAllRound() {
+//        // When
+//        randomNumberService.generateRandomNumberForAllRound(cars, roundCount);
+//
+//        // Then
+//        for (int i = 0; i < cars.getCarsSize(); i++) {
+//            Car carByIndex = cars.getCarByIndex(i);
+//            List<Integer> carNumberList = carByIndex.getCarNumbers().getNumbers();
+//            for (int j = 0; j < roundCount; j++) {
+//                assertThat(carNumberList.get(j)).isBetween(START_NUMBER, END_NUMBER);
+//            }
+//        }
+//    }
 }
