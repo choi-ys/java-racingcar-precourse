@@ -35,7 +35,7 @@ public class RandomNumberServiceTest {
         Car car = new Car(name);
 
         // When
-        randomNumberService.generateSingleRoundRandomNumberCar(car);
+        randomNumberService.generateSingleRoundRandomNumber(car);
 
         // Then
         assertThat(car.getCarNumbers().getNumbers().get(0)).isBetween(START_NUMBER, END_NUMBER);
@@ -51,7 +51,7 @@ public class RandomNumberServiceTest {
         Cars cars = Cars.of(player);
 
         // When
-        randomNumberService.generateSingleRoundRandomNumberCar(cars);
+        randomNumberService.generateSingleRoundRandomNumber(cars);
 
         // Then
         for (int i = 0; i < cars.getCarsSize(); i++) {
