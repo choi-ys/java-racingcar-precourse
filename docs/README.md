@@ -78,6 +78,12 @@
             Car car : // 어느 자동차의 결과인지
             RoundStatus roundstatus : GO / STOP, // 전진인지 멈춤인지
     ```
+    ```
+        RoundStatus : Enum
+            GO, STOP
+            boolean isGo: return this == GO;
+            boolean isStop(): return this == STOP;
+    ```
   - 전체 라운드가 종료되면 진행 결과를 반환하고 
   - 전체 라운드 진행 결과를 반환한다. 라운드 결과는 다음과 같은 항목을 포함한다 예를들면,
     ```
