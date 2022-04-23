@@ -19,24 +19,39 @@ import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
  */
 @DisplayName("Service:RandomNumber")
 public class RandomNumberServiceTest {
-    private String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
-    private int roundCount = 5;
-    private Player player;
-    private Cars cars;
-    RandomNumberService randomNumberService;
+
+    private RandomNumberService randomNumberService;
 
     @BeforeEach
     void setUp() {
-        player = Player.of(namesByComma, roundCount);
-        cars = Cars.of(player);
         randomNumberService = new RandomNumberService();
+    }
+
+    @Test
+    @DisplayName("단일 라운드 진행을 위해, 각 Car 객체에 난수 생성")
+    public void generateSingleRoundRandomNumberCarTest() {
+        // Given
+        String name = "마카롱택시";
+        Car car = new Car(name);
+
+        // When
+        randomNumberService.generateSingleRoundRandomNumberCar(car);
+
+        // Then
+        assertThat(car.getCarNumbers().getNumbers().get(0)).isBetween(START_NUMBER, END_NUMBER);
     }
 
     @Test
     @DisplayName("단일 라운드 진행을 위해, 각 Car 객체에 생성한 난수 할당")
     public void generatedSingleRoundRandomNumberTest() {
+        // Given
+        String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
+        int totalRound = 5;
+        Player player = Player.of(namesByComma, totalRound);
+        Cars cars = Cars.of(player);
+
         // When
-        randomNumberService.generateRandomNumberForSingleRound(cars);
+        randomNumberService.generateSingleRoundRandomNumberCar(cars);
 
         // Then
         for (int i = 0; i < cars.getCarsSize(); i++) {
@@ -45,20 +60,4 @@ public class RandomNumberServiceTest {
             assertThat(carNumberList.get(0)).isBetween(START_NUMBER, END_NUMBER);
         }
     }
-
-//    @Test
-//    @DisplayName("전체 라운드 진행을 위해, 각 Car 객체에 생성한 난수 할당")
-//    public void generateRandomNumberForAllRound() {
-//        // When
-//        randomNumberService.generateRandomNumberForAllRound(cars, roundCount);
-//
-//        // Then
-//        for (int i = 0; i < cars.getCarsSize(); i++) {
-//            Car carByIndex = cars.getCarByIndex(i);
-//            List<Integer> carNumberList = carByIndex.getCarNumbers().getNumbers();
-//            for (int j = 0; j < roundCount; j++) {
-//                assertThat(carNumberList.get(j)).isBetween(START_NUMBER, END_NUMBER);
-//            }
-//        }
-//    }
 }

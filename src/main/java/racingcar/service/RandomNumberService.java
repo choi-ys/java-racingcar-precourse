@@ -12,9 +12,13 @@ import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
  * @date : 2022/04/22 12:55 오후
  */
 public class RandomNumberService {
-    public void generateRandomNumberForSingleRound(Cars cars) {
+    public void generateSingleRoundRandomNumberCar(Car car) {
+        car.addNumber(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
+    }
+
+    public void generateSingleRoundRandomNumberCar(Cars cars) {
         for (Car car : cars.getCars()) {
-            car.addNumber(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
+            generateSingleRoundRandomNumberCar(car);
         }
     }
 }
