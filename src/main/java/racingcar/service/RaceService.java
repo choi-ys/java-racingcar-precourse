@@ -1,12 +1,17 @@
 package racingcar.service;
 
-import racingcar.domain.*;
+import racingcar.domain.Car;
+import racingcar.domain.Joiners;
+import racingcar.domain.Player;
+import racingcar.domain.RoundStatus;
 import racingcar.domain.response.CarRaceResult;
 import racingcar.domain.response.PlayResult;
 import racingcar.domain.response.RoundResult;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static racingcar.view.GuideMessagePrinter.printRoundResult;
 
 /**
  * @author : choi-ys
@@ -42,7 +47,7 @@ public class RaceService {
 
     public PlayResult play(Joiners joiners, Player player) {
         for (int i = 1; i <= player.getRoundCount(); i++) {
-            playSingleRoundByCars(joiners, i);
+            printRoundResult(playSingleRoundByCars(joiners, i));
         }
         return new PlayResult(joiners);
     }
