@@ -10,6 +10,7 @@ import racingcar.domain.wrap.CarNumbers;
 public class Car {
     private CarName carName;
     private CarNumbers carNumbers;
+    private int score;
 
     public Car(String name) {
         this.carName = new CarName(name);
@@ -26,5 +27,13 @@ public class Car {
 
     public CarNumbers getCarNumbers() {
         return carNumbers;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void addScore() {
+        this.score++;
     }
 }

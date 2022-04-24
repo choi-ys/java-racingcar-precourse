@@ -2,6 +2,7 @@ package racingcar.service;
 
 import racingcar.domain.*;
 import racingcar.domain.response.CarRaceResult;
+import racingcar.domain.response.PlayResult;
 import racingcar.domain.response.RoundResult;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class RaceService {
     public CarRaceResult playSingleRoundByCar(Car car, int currentRound) {
         randomNumberService.generateSingleRoundRandomNumberByCar(car);
         if (isMoving(car, currentRound)) {
+            car.addScore();
             return new CarRaceResult(car, RoundStatus.GO);
         }
         return new CarRaceResult(car, RoundStatus.STOP);
@@ -36,5 +38,12 @@ public class RaceService {
             carRaceResults.add(playSingleRoundByCar(car, currentRound));
         }
         return RoundResult.of(currentRound, carRaceResults);
+    }
+
+    public PlayResult play(Cars cars, Player player) {
+        for (int i = 1; i <= player.getRoundCount(); i++) {
+            playSingleRoundByCars(cars, i);
+        }
+        return new PlayResult(cars);
     }
 }

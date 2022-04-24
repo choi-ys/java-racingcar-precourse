@@ -6,8 +6,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import racingcar.domain.*;
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.Player;
 import racingcar.domain.response.CarRaceResult;
+import racingcar.domain.response.PlayResult;
 import racingcar.domain.response.RoundResult;
 
 import java.util.List;
@@ -27,9 +30,20 @@ class RaceServiceTest {
     int currentRound = 1;
     private Car car;
 
+    private String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
+    private int totalRound = 5;
+    private Player player;
+    private Cars cars;
+
+    private RaceService raceService;
+
     @BeforeEach
     void setUp() {
         car = new Car(name);
+        player = Player.of(namesByComma, totalRound);
+        cars = Cars.of(player);
+
+        raceService = new RaceService(new RandomNumberService());
     }
 
     @ParameterizedTest
@@ -40,7 +54,6 @@ class RaceServiceTest {
         car.addNumber(randomNumber);
 
         // When
-        RaceService raceService = new RaceService(new RandomNumberService());
         CarRaceResult carRaceResult = raceService.playSingleRoundByCar(car, currentRound);
 
         // Then
@@ -63,7 +76,6 @@ class RaceServiceTest {
         car.addNumber(randomNumber);
 
         // When
-        RaceService raceService = new RaceService(new RandomNumberService());
         CarRaceResult carRaceResult = raceService.playSingleRoundByCar(car, currentRound);
 
         // Then
@@ -82,18 +94,11 @@ class RaceServiceTest {
     @DisplayName("전체 차량의 단일 라운드 진행 Test")
     public void playSingleRoundByCars_andAssertionsResultTest() {
         // Given
-        String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
-        int roundCount = 5;
-        Player player = Player.of(namesByComma, roundCount);
-        Cars cars = Cars.of(player);
-
         cars.getCarByIndex(0).addNumber(1);
         cars.getCarByIndex(1).addNumber(2);
         cars.getCarByIndex(2).addNumber(3);
         cars.getCarByIndex(3).addNumber(4);
         cars.getCarByIndex(4).addNumber(5);
-
-        RaceService raceService = new RaceService(new RandomNumberService());
 
         // When
         RoundResult roundResult = raceService.playSingleRoundByCars(cars, 1);
@@ -110,6 +115,78 @@ class RaceServiceTest {
         );
     }
 
-    // TODO : 전체 차량의 단일 라운드 진행 및 결과 검증 Test
     // TODO : 전체 차량의 전체 라운드 진행 및 결과 검증 Test
+    @Test
+    @DisplayName("전체 차량의 전체 라운드 진행 Test : 단일 우승")
+    public void playAllRoundByCars_andAssertionsSingleWinnerTest() {
+        // Given
+        addNumbersByCar_singleWinner();
+
+        // When
+        PlayResult playResult = raceService.play(cars, player);
+
+        // Then
+        assertAll(
+                () -> assertThat(cars.getCarByIndex(0).getScore()).as("첫번째 차량의 전진 횟수").isEqualTo(2),
+                () -> assertThat(cars.getCarByIndex(1).getScore()).as("두번째 차량의 전진 횟수").isEqualTo(4),
+                () -> assertThat(cars.getCarByIndex(2).getScore()).as("세번째 차량의 전진 횟수").isEqualTo(1),
+                () -> assertThat(cars.getCarByIndex(3).getScore()).as("네번째 차량의 전진 횟수").isEqualTo(5),
+                () -> assertThat(cars.getCarByIndex(4).getScore()).as("다섯번째 차량의 전진 횟수").isEqualTo(3),
+                () -> assertThat(playResult.getWinners().getWinnerNames()).isEqualTo(cars.getCarByIndex(3).getCarName())
+        );
+    }
+
+    @Test
+    @DisplayName("전체 차량의 전체 라운드 진행 Test : 공동 우승")
+    public void playAllRoundByCars_andAssertionsJointWinnerTest() {
+        // Given
+        addNumbersByCar_jointWinner();
+
+        // When
+        PlayResult playResult = raceService.play(cars, player);
+
+        // Then
+        assertAll(
+                () -> assertThat(cars.getCarByIndex(0).getScore()).as("첫번째 차량의 전진 횟수").isEqualTo(2),
+                () -> assertThat(cars.getCarByIndex(1).getScore()).as("두번째 차량의 전진 횟수").isEqualTo(4),
+                () -> assertThat(cars.getCarByIndex(2).getScore()).as("세번째 차량의 전진 횟수").isEqualTo(1),
+                () -> assertThat(cars.getCarByIndex(3).getScore()).as("네번째 차량의 전진 횟수").isEqualTo(4),
+                () -> assertThat(cars.getCarByIndex(4).getScore()).as("다섯번째 차량의 전진 횟수").isEqualTo(3),
+                () -> assertThat(playResult.getWinners().getWinnerNames()).isEqualTo(cars.getCarByIndex(1).getCarName() + ", " + cars.getCarByIndex(3).getCarName())
+        );
+    }
+
+    private void addNumbersByCar_singleWinner() {
+        int[] firstCarRandomNumbers = {1, 2, 3, 4, 5};
+        int[] secondCarRandomNumbers = {1, 9, 6, 4, 5};
+        int[] thirdCarRandomNumbers = {1, 2, 1, 1, 5};
+        int[] forthCarRandomNumbers = {5, 4, 6, 7, 9};
+        int[] fifthCarRandomNumbers = {8, 2, 4, 2, 5};
+
+        addNumbers(cars.getCarByIndex(0), firstCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(1), secondCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(2), thirdCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(3), forthCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(4), fifthCarRandomNumbers);
+    }
+
+    private void addNumbersByCar_jointWinner() {
+        int[] firstCarRandomNumbers = {1, 2, 3, 4, 5};
+        int[] secondCarRandomNumbers = {1, 9, 6, 4, 5};
+        int[] thirdCarRandomNumbers = {1, 2, 1, 1, 5};
+        int[] forthCarRandomNumbers = {5, 4, 6, 7, 1};
+        int[] fifthCarRandomNumbers = {8, 2, 4, 2, 5};
+
+        addNumbers(cars.getCarByIndex(0), firstCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(1), secondCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(2), thirdCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(3), forthCarRandomNumbers);
+        addNumbers(cars.getCarByIndex(4), fifthCarRandomNumbers);
+    }
+
+    private void addNumbers(Car car, int[] randomNumbers) {
+        for (int randomNumber : randomNumbers) {
+            car.addNumber(randomNumber);
+        }
+    }
 }
