@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
  */
 @DisplayName("Service:Race")
 class RaceServiceTest {
-
     private final String name = "마카롱택시";
     int currentRound = 1;
     private Car car;
@@ -115,7 +114,6 @@ class RaceServiceTest {
         );
     }
 
-    // TODO : 전체 차량의 전체 라운드 진행 및 결과 검증 Test
     @Test
     @DisplayName("전체 차량의 전체 라운드 진행 Test : 단일 우승")
     public void playAllRoundByCars_andAssertionsSingleWinnerTest() {

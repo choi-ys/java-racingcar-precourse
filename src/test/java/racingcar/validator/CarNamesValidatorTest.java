@@ -49,5 +49,4 @@ class CarNamesValidatorTest {
                 Arguments.of("람보르기니 우라칸,아프릴리아 밀레")
         );
     }
-
 }

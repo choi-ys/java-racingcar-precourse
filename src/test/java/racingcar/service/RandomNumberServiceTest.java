@@ -19,7 +19,6 @@ import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
  */
 @DisplayName("Service:RandomNumber")
 public class RandomNumberServiceTest {
-
     private RandomNumberService randomNumberService;
 
     @BeforeEach

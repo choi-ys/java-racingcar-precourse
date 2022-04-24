@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
  */
 @DisplayName("Domain:Car")
 public class CarTest {
-
     private final String carName = "람보르기니";
     private Car car;
 

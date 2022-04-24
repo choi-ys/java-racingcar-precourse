@@ -17,7 +17,6 @@ import static racingcar.view.GuideMessagePrinter.printFinalWinners;
  * @date : 2022-04-25 오전 1:21
  */
 public class RaceController {
-
     public void run() {
         String carNames = inputCarNames();
         int totalRound = inputTotalRound();

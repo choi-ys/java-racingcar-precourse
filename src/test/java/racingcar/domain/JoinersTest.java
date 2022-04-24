@@ -12,7 +12,6 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @DisplayName("Domain:Cars")
 class JoinersTest {
-
     private String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
     private int roundCount = 5;
     private Player player;

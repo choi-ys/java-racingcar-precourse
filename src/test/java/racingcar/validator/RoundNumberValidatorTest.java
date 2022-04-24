@@ -48,6 +48,4 @@ class RoundNumberValidatorTest {
                 Arguments.of("")
         );
     }
-
-//    @DisplayName("유효하지 못한 타입의 라운드 수 유효성 검증 Test")
 }
