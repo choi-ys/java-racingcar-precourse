@@ -67,7 +67,7 @@ public class CarNamesValidator {
         try {
             new CarName(name);
             return true;
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
             return false;
         }
