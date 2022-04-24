@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static racingcar.utils.CarNamesUtils.splitByComma;
+
 /**
  * @author : choi-ys
  * @date : 2022/04/22 11:25 오전
@@ -31,7 +33,4 @@ public class Player {
         return roundCount;
     }
 
-    private static String[] splitByComma(String namesByComma) {
-        return namesByComma.split(",");
-    }
 }
