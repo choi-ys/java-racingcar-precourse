@@ -24,7 +24,7 @@ class CarNamesValidatorTest {
         String namesByComma = "마카롱택시,카카오택시,우티,타다";
 
         // When
-        boolean isValidNames = CarNamesValidator.isValidNames(namesByComma);
+        boolean isValidNames = CarNamesValidator.isValidCarNames(namesByComma);
 
         // Then
         assertThat(isValidNames).isTrue();
@@ -35,7 +35,7 @@ class CarNamesValidatorTest {
     @DisplayName("유효하지 못한 자동차 이름 검증 Test")
     public void invalidCarNamesValidatorTest(String namesByComma) {
         // When
-        boolean isValidNames = CarNamesValidator.isValidNames(namesByComma);
+        boolean isValidNames = CarNamesValidator.isValidCarNames(namesByComma);
 
         // Then
         assertThat(isValidNames).isFalse();
@@ -45,7 +45,8 @@ class CarNamesValidatorTest {
         return Stream.of(
                 Arguments.of("마카롱택시,"),
                 Arguments.of("마카롱택시|카카오택시"),
-                Arguments.of("")
+                Arguments.of(""),
+                Arguments.of("람보르기니 우라칸,아프릴리아 밀레")
         );
     }
 

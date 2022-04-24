@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static racingcar.constants.ErrorMessage.CAR_NAME_OVER_LENGTH_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_CAR_NAME_LENGTH_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -41,13 +41,12 @@ class CarNameTest {
         // When & Then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new CarName(given))
-                .withMessageContaining(CAR_NAME_OVER_LENGTH_ERROR_MESSAGE);
+                .withMessageContaining(INVALID_CAR_NAME_LENGTH_MESSAGE);
     }
 
     private static Stream createCarNameFailTest() {
         return Stream.of(
                 Arguments.of(""),
-                Arguments.of(new String()),
                 Arguments.of("ab cde")
         );
     }

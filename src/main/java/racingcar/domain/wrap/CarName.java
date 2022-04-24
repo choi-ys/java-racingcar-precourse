@@ -1,6 +1,6 @@
 package racingcar.domain.wrap;
 
-import static racingcar.constants.ErrorMessage.CAR_NAME_OVER_LENGTH_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_CAR_NAME_LENGTH_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -8,10 +8,12 @@ import static racingcar.constants.ErrorMessage.CAR_NAME_OVER_LENGTH_ERROR_MESSAG
  */
 public class CarName {
     private String name;
+    public static final int MINIMUM_NAME_LENGTH = 1;
+    public static final int MAXIMUM_NAME_LENGTH = 5;
 
     public CarName(String name) {
-        if (name.length() < 1 || name.length() > 5) {
-            throw new IllegalArgumentException(CAR_NAME_OVER_LENGTH_ERROR_MESSAGE);
+        if (name.length() < MINIMUM_NAME_LENGTH || name.length() > MAXIMUM_NAME_LENGTH) {
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH_MESSAGE);
         }
         this.name = name;
     }
