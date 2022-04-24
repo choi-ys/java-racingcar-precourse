@@ -1,5 +1,6 @@
 package racingcar.validator;
 
+import racingcar.constants.ErrorMessage;
 import racingcar.domain.wrap.CarName;
 import racingcar.utils.CarNamesUtils;
 
@@ -28,7 +29,7 @@ public class CarNamesValidator {
             isCommaSeparator(namesByComma);
             return true;
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(ErrorMessage.INVALID_SEPARATOR_MESSAGE);
             return false;
         }
     }
@@ -44,7 +45,7 @@ public class CarNamesValidator {
             isMinimumCarCount(namesArray);
             return true;
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(ErrorMessage.INVALID_CAR_COUNT_MESSAGE);
             return false;
         }
     }
@@ -68,7 +69,7 @@ public class CarNamesValidator {
             new CarName(name);
             return true;
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(ErrorMessage.INVALID_CAR_NAME_LENGTH_MESSAGE);
             return false;
         }
     }

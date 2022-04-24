@@ -2,6 +2,7 @@ package racingcar.validator;
 
 import racingcar.domain.wrap.RoundNumber;
 
+import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE;
 import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_TYPE_MESSAGE;
 
 /**
@@ -18,7 +19,7 @@ public class RoundNumberValidator {
             isNumber(totalRound);
             return true;
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            System.out.println(INVALID_ROUND_NUMBER_TYPE_MESSAGE);
             return false;
         }
     }
@@ -36,7 +37,7 @@ public class RoundNumberValidator {
             new RoundNumber(totalRound);
             return true;
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println(INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE);
             return false;
         }
     }
