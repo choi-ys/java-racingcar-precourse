@@ -1,8 +1,11 @@
 package racingcar.service;
 
-import racingcar.domain.Car;
-import racingcar.domain.CarRaceResult;
-import racingcar.domain.RoundStatus;
+import racingcar.domain.*;
+import racingcar.domain.response.CarRaceResult;
+import racingcar.domain.response.RoundResult;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : choi-ys
@@ -15,8 +18,8 @@ public class RaceService {
         this.randomNumberService = randomNumberService;
     }
 
-    public CarRaceResult playEachCarSingleRound(Car car, int currentRound) {
-        randomNumberService.generateSingleRoundRandomNumber(car);
+    public CarRaceResult playSingleRoundByCar(Car car, int currentRound) {
+        randomNumberService.generateSingleRoundRandomNumberByCar(car);
         if (isMoving(car, currentRound)) {
             return new CarRaceResult(car, RoundStatus.GO);
         }
@@ -25,5 +28,13 @@ public class RaceService {
 
     private boolean isMoving(Car car, int currentRound) {
         return car.getCarNumbers().getRandomNumberByRound(currentRound) >= 4;
+    }
+
+    public RoundResult playSingleRoundByCars(Cars cars, int currentRound) {
+        List<CarRaceResult> carRaceResults = new ArrayList<>();
+        for (Car car : cars.getCars()) {
+            carRaceResults.add(playSingleRoundByCar(car, currentRound));
+        }
+        return RoundResult.of(currentRound, carRaceResults);
     }
 }

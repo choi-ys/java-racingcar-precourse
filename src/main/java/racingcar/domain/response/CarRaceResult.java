@@ -1,4 +1,7 @@
-package racingcar.domain;
+package racingcar.domain.response;
+
+import racingcar.domain.Car;
+import racingcar.domain.RoundStatus;
 
 /**
  * @author : choi-ys
