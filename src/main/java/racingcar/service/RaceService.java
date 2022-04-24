@@ -46,7 +46,7 @@ public class RaceService {
     }
 
     public PlayResult play(Joiners joiners, Player player) {
-        for (int i = 1; i <= player.getRoundCount(); i++) {
+        for (int i = 1; i <= player.getTotalRound(); i++) {
             printRoundResult(playSingleRoundByCars(joiners, i));
         }
         return new PlayResult(joiners);

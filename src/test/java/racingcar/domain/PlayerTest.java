@@ -26,7 +26,7 @@ public class PlayerTest {
 
         // Then
         assertThat(player.getCarNames()).size().isEqualTo(split.length);
-        assertThat(player.getRoundCount()).isEqualTo(roundCount);
+        assertThat(player.getTotalRound()).isEqualTo(roundCount);
         for (int i = 0; i < split.length; i++) {
             assertThat(player.getCarNames().get(i)).isEqualTo(split[i]);
         }

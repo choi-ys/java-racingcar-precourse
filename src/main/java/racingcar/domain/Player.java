@@ -1,7 +1,8 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import racingcar.domain.wrap.CarNames;
+import racingcar.domain.wrap.TotalRound;
+
 import java.util.List;
 
 import static racingcar.utils.CarNamesUtils.splitByComma;
@@ -11,26 +12,24 @@ import static racingcar.utils.CarNamesUtils.splitByComma;
  * @date : 2022/04/22 11:25 오전
  */
 public class Player {
-    private List<String> carNames;
-    private int roundCount;
+    private CarNames carNames;
+    private TotalRound totalRound;
 
-    public Player(List<String> carNames, int roundCount) {
+    private Player(CarNames carNames, TotalRound totalRound) {
         this.carNames = carNames;
-        this.roundCount = roundCount;
+        this.totalRound = totalRound;
     }
 
-    public static Player of(String namesByComma, int roundCount) {
-        String[] strings = splitByComma(namesByComma);
-        List<String> carNames = new ArrayList<>(Arrays.asList(strings));
-        return new Player(carNames, roundCount);
+    public static Player of(String namesByComma, int totalRound) {
+        String[] carNameArray = splitByComma(namesByComma);
+        return new Player(CarNames.of(carNameArray), new TotalRound(totalRound));
+    }
+
+    public int getTotalRound() {
+        return totalRound.getTotalRound();
     }
 
     public List<String> getCarNames() {
-        return carNames;
+        return carNames.getCarNames();
     }
-
-    public int getRoundCount() {
-        return roundCount;
-    }
-
 }
