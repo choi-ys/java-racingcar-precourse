@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static racingcar.constants.ErrorMessage.CAR_NAME_INVALID_NUMBER_BOUNDARY_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_NUMBER_BOUNDARY_MESSAGE;
 import static racingcar.domain.wrap.CarNumbers.END_NUMBER;
 import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
 
@@ -57,7 +57,7 @@ class CarNumbersTest {
         // When & Then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new CarNumbers().addNumber(given))
-                .withMessageContaining(CAR_NAME_INVALID_NUMBER_BOUNDARY_ERROR_MESSAGE);
+                .withMessageContaining(INVALID_NUMBER_BOUNDARY_MESSAGE);
     }
 
     private static Stream addRandomNumberToCarNumbersFailTest() {

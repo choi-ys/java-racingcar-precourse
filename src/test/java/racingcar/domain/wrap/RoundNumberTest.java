@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -36,6 +36,6 @@ class RoundNumberTest {
         // When & Then
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new RoundNumber(round))
-                .withMessageContaining(INVALID_ROUND_NUMBER_BOUNDARY_ERROR_MESSAGE);
+                .withMessageContaining(INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE);
     }
 }

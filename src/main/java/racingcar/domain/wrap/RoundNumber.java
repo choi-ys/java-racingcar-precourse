@@ -1,6 +1,6 @@
 package racingcar.domain.wrap;
 
-import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -12,7 +12,7 @@ public class RoundNumber {
 
     public RoundNumber(int currentRound) {
         if (currentRound < 1) {
-            throw new IllegalArgumentException(INVALID_ROUND_NUMBER_BOUNDARY_ERROR_MESSAGE);
+            throw new IllegalArgumentException(INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE);
         }
         this.currentRound = currentRound;
     }

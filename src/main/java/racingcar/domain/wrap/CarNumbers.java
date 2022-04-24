@@ -3,7 +3,7 @@ package racingcar.domain.wrap;
 import java.util.ArrayList;
 import java.util.List;
 
-import static racingcar.constants.ErrorMessage.CAR_NAME_INVALID_NUMBER_BOUNDARY_ERROR_MESSAGE;
+import static racingcar.constants.ErrorMessage.INVALID_NUMBER_BOUNDARY_MESSAGE;
 
 /**
  * @author : choi-ys
@@ -16,7 +16,7 @@ public class CarNumbers {
 
     public void addNumber(int randomNumber) {
         if (randomNumber < START_NUMBER || randomNumber > END_NUMBER) {
-            throw new IllegalArgumentException(CAR_NAME_INVALID_NUMBER_BOUNDARY_ERROR_MESSAGE);
+            throw new IllegalArgumentException(INVALID_NUMBER_BOUNDARY_MESSAGE);
         }
         this.numbers.add(randomNumber);
     }
