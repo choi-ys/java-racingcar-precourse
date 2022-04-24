@@ -11,7 +11,7 @@ import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_ERR
  * @author : choi-ys
  * @date : 2022-04-24 오후 9:06
  */
-@DisplayName("Domain:wrap:RoundNumber")
+@DisplayName("Domain:Wrap:RoundNumber")
 class RoundNumberTest {
 
     @Test

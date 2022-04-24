@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author : choi-ys
  * @date : 2022/04/21 10:27 오후
  */
-@DisplayName("게임에 참여할 자동차 목록 객체")
+@DisplayName("Domain:Cars")
 class CarsTest {
 
     private String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";

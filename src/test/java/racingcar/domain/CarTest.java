@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
  * @author : choi-ys
  * @date : 2022/04/21 5:47 오후
  */
+@DisplayName("Domain:Car")
 public class CarTest {
 
     private final String carName = "람보르기니";

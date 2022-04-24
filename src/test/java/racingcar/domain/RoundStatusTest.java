@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author : choi-ys
  * @date : 2022/04/23 5:15 오후
  */
-@DisplayName("domain:RoundStatus")
+@DisplayName("Domain:RoundStatus")
 class RoundStatusTest {
 
     @Test
