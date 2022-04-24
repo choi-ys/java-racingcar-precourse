@@ -1,7 +1,7 @@
 package racingcar.domain.response;
 
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Joiners;
 import racingcar.domain.Winners;
 
 import java.util.ArrayList;
@@ -12,18 +12,18 @@ import java.util.List;
  * @date : 2022-04-24 오후 11:26
  */
 public class PlayResult {
-    private Cars Cars;
+    private Joiners Joiners;
     private Winners winners;
 
-    public PlayResult(Cars cars) {
-        this.Cars = cars;
+    public PlayResult(Joiners joiners) {
+        this.Joiners = joiners;
         this.winners = getWinners();
     }
 
     public Winners getWinners() {
         int winnerScore = getWinnerScore();
         List<Car> winnerCars = new ArrayList<>();
-        for (Car car : Cars.getCars()) {
+        for (Car car : Joiners.getCars()) {
             addWinner(winnerCars, car, winnerScore);
         }
         return new Winners(winnerCars);
@@ -31,7 +31,7 @@ public class PlayResult {
 
     private int getWinnerScore() {
         int winnerScore = 0;
-        for (Car car : Cars.getCars()) {
+        for (Car car : Joiners.getCars()) {
             winnerScore = updateWinnerScore(car, winnerScore);
         }
         return winnerScore;

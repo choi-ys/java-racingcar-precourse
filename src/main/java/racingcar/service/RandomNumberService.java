@@ -2,7 +2,7 @@ package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Joiners;
 
 import static racingcar.domain.wrap.CarNumbers.END_NUMBER;
 import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
@@ -16,8 +16,8 @@ public class RandomNumberService {
         car.addNumber(Randoms.pickNumberInRange(START_NUMBER, END_NUMBER));
     }
 
-    public void generateSingleRoundRandomNumberByCars(Cars cars) {
-        for (Car car : cars.getCars()) {
+    public void generateSingleRoundRandomNumberByCars(Joiners joiners) {
+        for (Car car : joiners.getCars()) {
             generateSingleRoundRandomNumberByCar(car);
         }
     }

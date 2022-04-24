@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @date : 2022/04/21 10:27 오후
  */
 @DisplayName("Domain:Cars")
-class CarsTest {
+class JoinersTest {
 
     private String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
     private int roundCount = 5;
@@ -29,12 +29,12 @@ class CarsTest {
         String[] nameArray = namesByComma.split(",");
 
         // When
-        Cars cars = Cars.of(player);
+        Joiners joiners = Joiners.of(player);
 
         // Then
-        assertThat(cars.cars.size()).isEqualTo(nameArray.length);
+        assertThat(joiners.cars.size()).isEqualTo(nameArray.length);
         for (int i = 0; i < nameArray.length; i++) {
-            assertThat(cars.getCarByIndex(i).getCarName()).isEqualTo(nameArray[i]);
+            assertThat(joiners.getCarByIndex(i).getCarName()).isEqualTo(nameArray[i]);
         }
     }
 }

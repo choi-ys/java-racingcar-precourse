@@ -32,18 +32,18 @@ public class RaceService {
         return car.getCarNumbers().getRandomNumberByRound(currentRound) >= 4;
     }
 
-    public RoundResult playSingleRoundByCars(Cars cars, int currentRound) {
+    public RoundResult playSingleRoundByCars(Joiners joiners, int currentRound) {
         List<CarRaceResult> carRaceResults = new ArrayList<>();
-        for (Car car : cars.getCars()) {
+        for (Car car : joiners.getCars()) {
             carRaceResults.add(playSingleRoundByCar(car, currentRound));
         }
         return RoundResult.of(currentRound, carRaceResults);
     }
 
-    public PlayResult play(Cars cars, Player player) {
+    public PlayResult play(Joiners joiners, Player player) {
         for (int i = 1; i <= player.getRoundCount(); i++) {
-            playSingleRoundByCars(cars, i);
+            playSingleRoundByCars(joiners, i);
         }
-        return new PlayResult(cars);
+        return new PlayResult(joiners);
     }
 }

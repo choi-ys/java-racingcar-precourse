@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.domain.Joiners;
 import racingcar.domain.Player;
 
 import java.util.List;
@@ -48,14 +48,14 @@ public class RandomNumberServiceTest {
         String namesByComma = "람보르기니,마카롱택시,카카오택시,우라칸,밀레";
         int totalRound = 5;
         Player player = Player.of(namesByComma, totalRound);
-        Cars cars = Cars.of(player);
+        Joiners joiners = Joiners.of(player);
 
         // When
-        randomNumberService.generateSingleRoundRandomNumberByCars(cars);
+        randomNumberService.generateSingleRoundRandomNumberByCars(joiners);
 
         // Then
-        for (int i = 0; i < cars.getCarsSize(); i++) {
-            Car carByIndex = cars.getCarByIndex(i);
+        for (int i = 0; i < joiners.getCarsSize(); i++) {
+            Car carByIndex = joiners.getCarByIndex(i);
             List<Integer> carNumberList = carByIndex.getCarNumbers().getNumbers();
             assertThat(carNumberList.get(0)).isBetween(START_NUMBER, END_NUMBER);
         }
