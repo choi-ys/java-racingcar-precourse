@@ -22,8 +22,6 @@ class CarNamesUtilsTest {
 
         // When
         String[] actual = CarNamesUtils.splitByComma(namesByComma);
-        System.out.println(Arrays.toString(actual));
-        System.out.println(actual.length);
 
         // Then
         assertThat(actual.length).isEqualTo(namesByComma.split(",").length);
