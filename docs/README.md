@@ -87,7 +87,7 @@
   - 전체 라운드가 종료되면 진행 결과를 반환하고 
   - 전체 라운드 진행 결과를 반환한다. 라운드 결과는 다음과 같은 항목을 포함한다 예를들면,
     ```
-        RoundResults
+        RoundResult
             int round : 1, // 몇번째 라운드 인지
             CarRaceResults CarRaceResults // 해당 라운드에 참여한 자동차의 레이스 결과 목록
     ```
