@@ -1,6 +1,6 @@
 package racingcar.validator;
 
-import racingcar.domain.wrap.RoundNumber;
+import racingcar.domain.wrap.CurrentRound;
 
 import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE;
 import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_TYPE_MESSAGE;
@@ -9,7 +9,7 @@ import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_TYPE_MESSAGE
  * @author : choi-ys
  * @date : 2022-04-25 오전 1:20
  */
-public class RoundNumberValidator {
+public class TotalRoundValidator {
     public static boolean isValidRoundNumber(String totalRound) {
         return isValidType(totalRound) && isValidNumber(Integer.parseInt(totalRound));
     }
@@ -34,7 +34,7 @@ public class RoundNumberValidator {
 
     private static boolean isValidNumber(int totalRound) {
         try {
-            new RoundNumber(totalRound);
+            new CurrentRound(totalRound);
             return true;
         } catch (IllegalArgumentException e) {
             System.out.println(INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE);

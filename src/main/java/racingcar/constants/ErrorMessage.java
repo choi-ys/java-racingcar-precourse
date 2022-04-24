@@ -4,7 +4,7 @@ import static racingcar.domain.wrap.CarName.MAXIMUM_NAME_LENGTH;
 import static racingcar.domain.wrap.CarName.MINIMUM_NAME_LENGTH;
 import static racingcar.domain.wrap.CarNumbers.END_NUMBER;
 import static racingcar.domain.wrap.CarNumbers.START_NUMBER;
-import static racingcar.domain.wrap.RoundNumber.MINIMUM_ROUND_NUMBER;
+import static racingcar.domain.wrap.CurrentRound.MINIMUM_ROUND_NUMBER;
 import static racingcar.utils.CarNamesUtils.SEPARATOR;
 import static racingcar.validator.CarNamesValidator.MINIMUM_CAR_COUNT;
 

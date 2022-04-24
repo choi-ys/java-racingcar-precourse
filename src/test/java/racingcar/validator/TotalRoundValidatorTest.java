@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author : choi-ys
  * @date : 2022-04-25 오전 3:14
  */
-@DisplayName("Validator:RoundNumberValidator")
-class RoundNumberValidatorTest {
+@DisplayName("Validator:TotalRoundValidator")
+class TotalRoundValidatorTest {
 
     @Test
     @DisplayName("경주를 진행할 라운드 수 유효성 검증 Test")
@@ -24,7 +24,7 @@ class RoundNumberValidatorTest {
         String totalRound = "5";
 
         // When
-        boolean isValidRoundNumber = RoundNumberValidator.isValidRoundNumber(totalRound);
+        boolean isValidRoundNumber = TotalRoundValidator.isValidRoundNumber(totalRound);
 
         // Then
         assertThat(isValidRoundNumber).isTrue();
@@ -35,7 +35,7 @@ class RoundNumberValidatorTest {
     @DisplayName("유효하지 못한 라운드 수 유효성 검증 Test")
     public void invalidRoundNumberTest(String invalidRoundNumber) {
         // When
-        boolean isValidRoundNumber = RoundNumberValidator.isValidRoundNumber(invalidRoundNumber);
+        boolean isValidRoundNumber = TotalRoundValidator.isValidRoundNumber(invalidRoundNumber);
 
         // Then
         assertThat(isValidRoundNumber).isFalse();

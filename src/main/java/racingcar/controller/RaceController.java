@@ -7,7 +7,7 @@ import racingcar.domain.response.PlayResult;
 import racingcar.service.RaceService;
 import racingcar.service.RandomNumberService;
 import racingcar.validator.CarNamesValidator;
-import racingcar.validator.RoundNumberValidator;
+import racingcar.validator.TotalRoundValidator;
 import racingcar.view.GuideMessagePrinter;
 
 import static racingcar.view.GuideMessagePrinter.printFinalWinners;
@@ -42,7 +42,7 @@ public class RaceController {
     private int inputTotalRound() {
         GuideMessagePrinter.printInputRoundCountGuideMessage();
         String totalRoundCount = Console.readLine();
-        while (!RoundNumberValidator.isValidRoundNumber(totalRoundCount)){
+        while (!TotalRoundValidator.isValidRoundNumber(totalRoundCount)){
             GuideMessagePrinter.printInputRoundCountGuideMessage();
             totalRoundCount = Console.readLine();
         }

@@ -6,11 +6,11 @@ import static racingcar.constants.ErrorMessage.INVALID_ROUND_NUMBER_BOUNDARY_MES
  * @author : choi-ys
  * @date : 2022-04-24 오후 8:58
  */
-public class RoundNumber {
+public class CurrentRound {
     int currentRound;
     public static final int MINIMUM_ROUND_NUMBER = 1;
 
-    public RoundNumber(int currentRound) {
+    public CurrentRound(int currentRound) {
         if (currentRound < 1) {
             throw new IllegalArgumentException(INVALID_ROUND_NUMBER_BOUNDARY_MESSAGE);
         }
