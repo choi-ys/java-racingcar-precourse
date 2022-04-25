@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import racingcar.domain.wrap.CarName;
 import racingcar.domain.wrap.CarNumbers;
+import racingcar.domain.wrap.Score;
 
 /**
  * @author : choi-ys
@@ -10,11 +11,12 @@ import racingcar.domain.wrap.CarNumbers;
 public class Car {
     private CarName carName;
     private CarNumbers carNumbers;
-    private int score;
+    private Score score;
 
     public Car(String name) {
         this.carName = new CarName(name);
         this.carNumbers = new CarNumbers();
+        this.score = new Score();
     }
 
     public String getCarName() {
@@ -30,10 +32,10 @@ public class Car {
     }
 
     public int getScore() {
-        return score;
+        return score.getScore();
     }
 
     public void addScore() {
-        this.score++;
+        this.score.addScore();
     }
 }
