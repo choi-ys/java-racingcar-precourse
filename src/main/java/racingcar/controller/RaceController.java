@@ -11,6 +11,7 @@ import racingcar.validator.TotalRoundValidator;
 import racingcar.view.GuideMessagePrinter;
 
 import static racingcar.view.GuideMessagePrinter.printFinalWinners;
+import static racingcar.view.GuideMessagePrinter.printRaceResultGuildMessage;
 
 /**
  * @author : choi-ys
@@ -24,6 +25,7 @@ public class RaceController {
         Player player = Player.of(carNames, totalRound);
         Joiners joiners = Joiners.of(player);
 
+        printRaceResultGuildMessage();
         RaceService raceService = new RaceService(new RandomNumberService());
         PlayResult playResult = raceService.play(joiners, player);
         printFinalWinners(playResult.getWinners());
